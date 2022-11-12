@@ -31,7 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
+CSRF_TRUSTED_ORIGINS = [ 'https://english-1.azurewebsites.net']
 # Application definition
 
 INSTALLED_APPS = [
