@@ -30,9 +30,9 @@ SECRET_KEY = 'django-insecure-p%d@e@_4f=+(_&245lb!hawu2xvo73phw=c9k+a$h&aurf8u^3
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://smartenglish.tech", 'smartenglish.tech']
+ALLOWED_HOSTS = ['https://english-1.azurewebsites.net', 'english-1.azurewebsites.net']
 
-CSRF_TRUSTED_ORIGINS = ["https://smartenglish.tech"]
+CSRF_TRUSTED_ORIGINS = [ 'https://english-1.azurewebsites.net']
 # Application definition
 
 INSTALLED_APPS = [
