@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,4 +32,4 @@ urlpatterns = [
     path('mypage/', include('mypage.urls', namespace='mypage')),
     # 유저 관리(로그인, 회원가입, 로그아웃 기능)
     path('auth/', include('users.urls', namespace='users')),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
