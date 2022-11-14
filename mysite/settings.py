@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-p%d@e@_4f=+(_&245lb!hawu2xvo73phw=c9k+a$h&aurf8u^3
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://english-1.azurewebsites.net', 'english-1.azurewebsites.net']
+ALLOWED_HOSTS = ['https://english-1.azurewebsites.net', 'english-1.azurewebsites.net' ,'127.0.0.1']
 
 CSRF_TRUSTED_ORIGINS = [ 'https://english-1.azurewebsites.net']
 # Application definition
@@ -94,7 +94,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',        
+        'NAME': 'sql12569267',
+        'USER': 'sql12569267',
+        'PASSWORD': 'Q3QDedqeK8',
+        'HOST': 'sql12.freesqldatabase.com',
+        'PORT': '3306',
     }
 }
 
@@ -142,8 +147,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    "https://smartenglishstudy-68bfc.web.app",
-    "https://smartenglish.tech"
+    "https://smartenglishstudy-68bfc.web.app"
 ]
 
 REST_FRAMEWORK = {
