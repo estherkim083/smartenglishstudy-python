@@ -55,6 +55,7 @@ class VocabEdit(APIView):
     def post(self, request, id):  #리딩단어장 세부 보기에서 수정하는 기능.
         
         authenticate_token(request.user)
+        print(request.data)
         keyword= request.data['keyword']
         if keyword== None:
             keyword= ''
@@ -70,9 +71,10 @@ class VocabEdit(APIView):
             meaning_en= ''
             meaning_en_keywords= ''
         else:
-            r = Rake()
-            r.extract_keywords_from_text(meaning_en)
-            r= r.get_ranked_phrases()
+            # r = Rake()
+            # r.extract_keywords_from_text(meaning_en)
+            # r= r.get_ranked_phrases()
+            r= meaning_en.split()
             meaning_en_keywords= r
         synonym= request.data['synonym']
         if synonym== None:
