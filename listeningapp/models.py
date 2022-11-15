@@ -13,7 +13,7 @@ class ListeningDataModel(models.Model):
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='listening_data_model')
     script_file_name= models.JSONField(default=dict)
-    script_text=models.CharField(max_length=100000000000000)
+    script_text=models.CharField(max_length=100000)
     created_at= models.CharField(max_length=100, default=make_date_time())
     modified_at= models.CharField(max_length=100, default=make_date_time())
     title= models.CharField(max_length=100)

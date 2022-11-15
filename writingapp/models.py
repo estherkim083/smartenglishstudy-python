@@ -43,7 +43,7 @@ class WritingModel(PolymorphicModel):
     participated_at= models.CharField(max_length=100, default=make_date_time()) # joined at
     editor_list= models.JSONField(default=list)
     my_writing_topic= models.CharField(max_length=100000, default='')
-    my_writing_content= models.CharField(max_length=100000000, default='')
+    my_writing_content= models.CharField(max_length=100000, default='')
     comment_list= models.JSONField(default=list)
     created_at= models.CharField(max_length=100, default=make_date_time())
     modified_at= models.CharField(max_length=100, default=make_date_time())
@@ -66,11 +66,11 @@ class BookWritingModel(WritingModel):
 class EditorModel(PolymorphicModel):
     editor= models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='editor_model')
-    essay_actual_rsrc_text= models.CharField(max_length=100000000 ,default= '')
-    highlight_html= models.CharField(max_length=100000000000)
-    memo_html= models.CharField(max_length=100000000000)
+    essay_actual_rsrc_text= models.CharField(max_length=100000 ,default= '')
+    highlight_html= models.CharField(max_length=100000)
+    memo_html= models.CharField(max_length=100000)
     rating= models.PositiveIntegerField(default=0)
-    evaluation_text= models.CharField(max_length=100000000)
+    evaluation_text= models.CharField(max_length=100000)
     created_at= models.CharField(max_length=100, default=make_date_time())
     modified_at= models.CharField(max_length=100, default=make_date_time())
     

@@ -94,13 +94,13 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
         # 'NAME': BASE_DIR / 'db.sqlite3',        
-        'NAME': 'sql12569267',
-        'USER': 'sql12569267',
-        'PASSWORD': 'Q3QDedqeK8',
-        'HOST': 'sql12.freesqldatabase.com',
-        'PORT': '3306',
+        'NAME': 'cdsvttau',
+        'USER': 'cdsvttau',
+        'PASSWORD': 'ySnic9GahNBaUEFu4xTbKS9t7HFdWSrC',
+        'HOST': 'heffalump.db.elephantsql.com',
+        'PORT': 5432
     }
 }
 

@@ -16,9 +16,9 @@ class ReadingDataModel(models.Model):
     created_at= models.CharField(max_length=100, default=make_date_time())
     modified_at= models.CharField(max_length=100, default=make_date_time())
     title= models.CharField(max_length=100)
-    actual_rsrc_txt= models.CharField(max_length=1000000000)
-    memo_html= models.CharField(max_length=1000000000)
-    highlight_html= models.CharField(max_length=1000000000)
+    actual_rsrc_txt= models.CharField(max_length=100000)
+    memo_html= models.CharField(max_length=100000)
+    highlight_html= models.CharField(max_length=100000)
     tags= models.JSONField(default=list)
     participants= models.JSONField(default=list, null=True)
     
