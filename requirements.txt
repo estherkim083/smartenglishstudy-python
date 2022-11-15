@@ -25,9 +25,9 @@ grpcio-status==1.50.0
 httplib2==0.21.0
 idna==3.4
 msgpack==1.0.4
-mysql-connector-python==8.0.31
 proto-plus==1.22.1
-protobuf==3.20.1
+protobuf==4.21.9
+psycopg2==2.9.5
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycparser==2.21
