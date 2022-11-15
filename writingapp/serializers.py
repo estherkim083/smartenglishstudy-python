@@ -70,10 +70,11 @@ class EditBookWritingRoomSerializer(serializers.ModelSerializer):
     about_content= serializers.CharField(max_length=100000)
     about_room= serializers.CharField(max_length=100000)
     room_title= serializers.CharField(max_length=100)
+    hash= serializers.CharField(max_length=100, default= '')
     
     class Meta:
         model = BookRoomModel
-        fields = ('topic', 'about_content', 'about_room', 'room_title', 'book_info')
+        fields = ('topic', 'about_content', 'about_room', 'room_title', 'book_info' ,'hash')
         
     def update(self, instance, validated_data):
         super().update(instance=instance, validated_data=validated_data)
