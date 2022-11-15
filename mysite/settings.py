@@ -149,7 +149,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    "https://smartenglishstudy-68bfc.web.app"
+    "https://smartenglishstudy-68bfc.web.app",
+    "http://localhost:3000",
+    "https://smartenglish-study-learn.web.app"
 ]
 
 REST_FRAMEWORK = {

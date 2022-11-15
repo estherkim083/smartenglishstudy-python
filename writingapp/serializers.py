@@ -71,6 +71,7 @@ class EditBookWritingRoomSerializer(serializers.ModelSerializer):
     about_room= serializers.CharField(max_length=100000)
     room_title= serializers.CharField(max_length=100)
     hash= serializers.CharField(max_length=100, default= '')
+    book_info= serializers.CharField(max_length=100000)
     
     class Meta:
         model = BookRoomModel
