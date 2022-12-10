@@ -241,7 +241,7 @@ class ReadingVocabBoardView(APIView):
         rv= ReadingVocabModel.objects.filter(user=request.user).values_list('pk', flat=True)
         res= {}
         if not rv.exists():
-            return Response({"Error": "ReadingVocabModel does not exist"}, status=status.HTTP_404_NOT_FOUND)
+            return Response(res, status=status.HTTP_200_OK)
         else:
             for v in rv:
                 v= str(v)
