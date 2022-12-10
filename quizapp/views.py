@@ -132,8 +132,7 @@ class GetQuizOwnerQuesList(APIView):
                 obj= QuizRoomModel.objects.get(id=id)
                 res[obj.id]= {"thumbnail": obj.thumbnail_img, "room_title": obj.quiz_room_title, "room_desc": obj.about_quiz_room}
             return Response(res, status=status.HTTP_200_OK)
-        
-        return Response(res, status=status.HTTP_304_NOT_MODIFIED)
+        return Response(res, status=status.HTTP_200_OK)
         
 class QuizDetail(APIView):
     
@@ -216,7 +215,6 @@ class EditQuizBigQuestion(APIView):
 class GetQuizRoomList(APIView):
     
     def get(self, request):
-            
         authenticate_token(request.user)
         objs= QuizRoomModel.objects.all()
         res= {}
@@ -362,12 +360,12 @@ class QuizScoreList(APIView):
     
     def get(self, request):
         authenticate_token(request.user)
-        objs= QuizRoomModel.objects.all()
+        objs= QuizRoomModel.objects.all()        
+        res = {}
         
-        if not objs.exists():            
-            res = {}
+        if not objs.exists():       
+            return Response(res, status=status.HTTP_200_OK)
         else:
-            res=  {}
             for id in objs:                
                 id= str(id)
                 obj= QuizRoomModel.objects.get(id=id)
@@ -378,12 +376,12 @@ class QuizScoreList(APIView):
                     pass
             return Response(res, status=status.HTTP_200_OK)
         
-        return Response(res, status=status.HTTP_400_BAD_REQUEST)
     
     
 class QuizScoreView(APIView):
     
     def get(self, request, id):
+        res={}
         authenticate_token(request.user)
         try:
             stud_obj= StudentQuizModel.objects.get(id=id)
@@ -393,7 +391,7 @@ class QuizScoreView(APIView):
             res= {"유형_문제개수": type_and_num, "체크리스트": y}
             return Response(res, status=status.HTTP_200_OK)
         except StudentQuizModel.DoesNotExist:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response(res, status=status.HTTP_200_OK)
             
     
 class QuizStudentScoreList(APIView):
@@ -415,5 +413,5 @@ class QuizStudentScoreList(APIView):
                     res[o.id]= {"quiz_room_title": o.room.quiz_room_title, "시험본학생": o.student.user_name, "성적": o.score_percentage}
             return Response(res, status=status.HTTP_200_OK)
         
-        return Response(res, status=status.HTTP_400_BAD_REQUEST)
+        return Response(res, status=status.HTTP_200_OK)
     

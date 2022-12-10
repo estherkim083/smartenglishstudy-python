@@ -248,8 +248,10 @@ class Login(APIView):
         try:
             account= NewUser.objects.get(email=email)
         except BaseException as e:
+            print("1")
             return Response("계정이 존재하지 않습니다.", status=status.HTTP_400_BAD_REQUEST)
         if password != account.password:
+            print("2")
             return Response("비밀번호가 틀렸습니다.", status=status.HTTP_400_BAD_REQUEST)
         if account.is_active:
             # token = user_token_check(email)
@@ -263,6 +265,7 @@ class Login(APIView):
             print(res)
             return Response(res)
         else:
+            print('3')
             return Response("계정이 비활성화되어 있습니다.", status=status.HTTP_400_BAD_REQUEST)
 
 

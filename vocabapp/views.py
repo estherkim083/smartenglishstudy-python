@@ -23,7 +23,7 @@ class Vocab(APIView):  #단어 등록. 및 유저가 등록한 단어 조회.
         vocab_note_objs= VocabNote.objects.filter(creator= request.user).values_list('pk', flat=True)
         res= {}
         if not vocab_note_objs.exists():
-            return Response({"Error": "VocabNoteModel does not exist"}, status=status.HTTP_404_NOT_FOUND)
+            return Response(res, status=status.HTTP_200_OK)
         else:
             for v in vocab_note_objs:
                 v= str(v)
@@ -134,7 +134,7 @@ class VocabQuizView(APIView):
          vocab_note_objs= VocabNote.objects.filter(creator= request.user).values_list('pk', flat=True)
          res= {}
          if not vocab_note_objs.exists():
-             return Response({"Error": "not exist"}, status=status.HTTP_404_NOT_FOUND)
+            return Response(res, status=status.HTTP_200_OK)
          else:
             vocab_note_ids= []
     
@@ -256,10 +256,10 @@ class VocabQuizView(APIView):
 class VocabQuizResult(APIView):
     
     def get(self, request):
+        res= {}
         try:
             quiz_info= RequestUserVocabRandomQuizIdList.objects.get(user= request.user)
             id_list= quiz_info.id_list
-            res= {}
             for id in id_list:
                 vocab_obj= VocabQuiz.objects.get(id=id)
                 if isinstance(vocab_obj, VocabQuizType1): # 영어해석 문장 적는 문제
@@ -270,6 +270,6 @@ class VocabQuizResult(APIView):
                     res[vocab_obj.id]= {"label":"type3", "한글의미": vocab_obj.target_vocab.meaning_kor, "영어의미글": vocab_obj.target_vocab.meaning_en, "답": vocab_obj.ans_keyword, "학생답": vocab_obj.user_ans, "iscorrect": vocab_obj.is_correct}
             return Response(res, status=status.HTTP_200_OK)
         except RequestUserVocabRandomQuizIdList.DoesNotExist:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response(res, status=status.HTTP_200_OK)
         
             

@@ -552,7 +552,8 @@ class EditBookWritingRoom(APIView):
         try:
             br= BookRoomModel.objects.get(pk= id, owner= request.user)
             serializer = EditBookWritingRoomSerializer(br, data=request.data)
-            
+            if not serializer.is_valid():
+                print(serializer.errors)
             if serializer.is_valid():
                 serializer.save()
                 return Response(status=status.HTTP_200_OK)
