@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-p%d@e@_4f=+(_&245lb!hawu2xvo73phw=c9k+a$h&aurf8u^3
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://english-1.azurewebsites.net', 'english-1.azurewebsites.net' ,'127.0.0.1']
+ALLOWED_HOSTS = ['https://english-1.azurewebsites.net', 'english-1.azurewebsites.net' ,'127.0.0.1', 'localhost']
 
 CSRF_TRUSTED_ORIGINS = [ 'https://english-1.azurewebsites.net']
 # Application definition

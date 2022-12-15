@@ -459,13 +459,27 @@ class DeleteEdit(APIView):
                 rg2= RoleGroup.objects.get(name="is_essay_editor_of"+str(edit_obj.id)) 
                 ug= UserGroup.objects.filter(role_group=rg)     
                 ug2= UserGroup.objects.filter(role_group=rg2)
-                for u in ug:           
+                
+                ug2_id= list(ug2)[0]
+                usergroup= UserGroup.objects.get(id= int(str(ug2_id)))
+                editor_user_email= usergroup.user.email
+                editor_list= edit_obj.essay_model_target.editor_list
+                print(editor_list, "기존의 essay editor list")
+                if editor_user_email in editor_list:
+                    editor_list.remove(editor_user_email)
+                edit_obj.essay_model_target.editor_list=editor_list
+                edit_obj.essay_model_target.save()
+                print(edit_obj.essay_model_target.editor_list, "업데이트된 essay editor list")
+                print(edit_obj.essay_model_target, "essay model 객체")
+                
+                for u in ug: 
                     u.delete()
                 rg.delete()     
                 for u in ug2:           
                     u.delete()
                 rg2.delete()   
                 edit_obj.delete()
+                
                 return Response(status=status.HTTP_200_OK) 
         elif type== "book":
             edit_obj= BookWritingEditorModel.objects.get(id=id)
@@ -474,6 +488,22 @@ class DeleteEdit(APIView):
                 rg2= RoleGroup.objects.get(name="is_book_writing_editor_of"+str(edit_obj.id)) 
                 ug= UserGroup.objects.filter(role_group=rg)     
                 ug2= UserGroup.objects.filter(role_group=rg2)
+                
+                # book 모델의 editor list 에서도 삭제
+                print(list(ug2)[0])
+                ug2_id= list(ug2)[0]
+                usergroup= UserGroup.objects.get(id= int(str(ug2_id)))
+                print(usergroup)
+                editor_user_email= usergroup.user.email
+                editor_list= edit_obj.book_writing_model_target.editor_list
+                print(editor_list, "기존의 book editor list")
+                if editor_user_email in editor_list:
+                    editor_list.remove(editor_user_email)
+                edit_obj.book_writing_model_target.editor_list=editor_list
+                edit_obj.book_writing_model_target.save()
+                print(edit_obj.book_writing_model_target.editor_list, "업데이트된 book editor list")
+                print(edit_obj.book_writing_model_target, "book model 객체")
+                    
                 for u in ug:           
                     u.delete()
                 rg.delete()     
